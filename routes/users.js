@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require("../node_modules/express");
+const router = express.Router();
+const usersController = require('../controllers/usersController');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+
+router.get('/test', (req, res) => {
+  res.json({ msg: "this is the earnings route" });
 });
+
+router.post('/register', usersController.signup);
+router.post('/login', usersController.login);
+router.get('/alldb', usersController.completeDataBase);
 
 module.exports = router;
