@@ -1,13 +1,20 @@
 import * as SessionUtil from '../../utils/session_util';
 import jwt_decode from 'jwt-decode';
 import { Dispatch } from 'redux';
+import 
 
 
+export const signup = (user: any) => async (dispatch: Dispatch) => {
 
+    try {
+        const res = await SessionUtil.signup(user);
+        const { token } = res.data;
+        localStorage.setItem("jwtToken", token);
+        SessionUtil.setAuthToken(token);
+        const decoded = jwt_decode(token);
 
-
-
-export const signup = user => async (dispatch: Dispatch) => {
+        dispatch()
+    }
     return SessionUtil.signup(user)
         // .then(res => 
         //     res.status(201).send('Account Created')
@@ -18,6 +25,8 @@ export const signup = user => async (dispatch: Dispatch) => {
             localStorage.setItem("jwtToken", token);
             SessionUtil.setAuthToken(token);
             const decoded = jwt_decode(token);
+
+
             dispatch(loginUser(decoded))
         })
         .catch(err => {
