@@ -13,8 +13,6 @@ interface MyToken {
 }
 
 
-
-
 export const login = (user: any) => async (dispatch: Dispatch<SessionActions>) => {
 
     try {
@@ -32,44 +30,12 @@ export const login = (user: any) => async (dispatch: Dispatch<SessionActions>) =
 
 }
 
-// export const login = (user: any) => async (dispatch: Dispatch) => {
-//     // return(
-//     // await SessionUtil.login(user)
-//     //     .then(res => {
-//     //         const { token } = res.data;
-//     //         localStorage.setItem('jwtToken', token);
-//     //         SessionUtil.setAuthToken(token);
-//     //         const decoded = jwt_decode(token);
-//     //         dispatch(loginUser(decoded));
-//     //     } )
-//     //     .catch(err => {
-//     //         dispatch(sessionErrors(err))
-//     //     }))
-//     try {
-
-//     } catch(e)
+// export const logout = () => dispatch => {
+//     localStorage.removeItem('jwtToken');
+//     SessionUtil.setAuthToken(false);
+//     dispatch(logoutUser());
 // };
 
-// export const login = user => dispatch => {
-//     return (
-//         SessionUtil.login(user)
-//             .then(res => {
-//             const { token } = res.data;
-//             localStorage.setItem('jwtToken', token);
-//             SessionUtil.setAuthToken(token);
-//             const decoded = jwt_decode(token);
-//             dispatch(loginUser(decoded));
-//             }), err => dispatch(sessionErrors(err))
-//     )
-// }
-
-
-export const logout = () => dispatch => {
-    localStorage.removeItem('jwtToken');
-    SessionUtil.setAuthToken(false);
-    dispatch(logoutUser());
-};
-
-export const clearErrors = () => dispatch => {
-    dispatch(clearSessionErrors());
-};
+// export const clearErrors = () => dispatch => {
+//     dispatch(clearSessionErrors());
+// };
