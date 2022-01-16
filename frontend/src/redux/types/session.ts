@@ -18,7 +18,6 @@ export type SessionErrors = {
 }
 
 
-
 interface ILoginUser {
     type: typeof ActionTypes.LOGIN_USER,
     payload: LoginInfo
@@ -42,5 +41,10 @@ export type SessionActions =
     | ILogoutUser
     | ISessionErrors
     | IClearSessionErrors
+
+export interface IUserState {
+    isAuthenticated: boolean | null,
+    user: LoginInfo['id']
+}
 
 

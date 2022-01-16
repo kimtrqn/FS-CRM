@@ -1,15 +1,27 @@
+import ActionTypes from '../actions/types';
+import { SessionActions, IUserState } from '../types/session';
 
-interface DefaultStateI {
 
-}
+const initialState: IUserState = {
+    isAuthenticated: null,
+    user: {}
+};
 
-const defaultState: DefaultStateI = {
+const sessionReducer = (state=initialState, action: SessionActions): IUserState => {
+    Object.freeze(state);
+    switch(action.type) {
+        case ActionTypes.LOGIN_USER:
+            return {
+                ...state,
+                isAuthenticated: !!action.payload,
+                user: action.payload.id,
+            }
 
-}
-
-const sessionReducer = (state: DefaultStateI = defaultState, action: any): DefaultStateI => {
-
-    return state;
+        default:
+            return state;
+    }
+    
+    
 };
 
 export default sessionReducer;

@@ -8,36 +8,40 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import App from './App';
 
+interface MyToken {
+    id: any,
+    email: string,
+    password: string
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // let store = Store()
-  let store = Store();
+  let store = Store()
 
-  // if (localStorage.jwtToken) {
-  //   setAuthToken(localStorage.jwtToken);
-  //   const decodedUser = jwt_decode(localStorage.jwtToken);
-  //   const preloadedState = {
-  //     entities: { users: { [decodedUser.id]: decodedUser } },
-  //     session: { 
-  //       // isAuthenticated: true, 
-  //       id: decodedUser.id },
-  //   };
+  if (localStorage.jwtToken) {
+    setAuthToken(localStorage.jwtToken);
+    const decodedUser = jwt_decode<MyToken>(localStorage.jwtToken);
+    const preloadedState = {
+      entities: { users: { [decodedUser.id]: decodedUser } },
+      session: { 
+        isAuthenticated: true, 
+        id: decodedUser.id },
+    };
 
-  //   store = Store(preloadedState);
-  //   const currentTime = Date.now() / 1000;
+    store = Store(preloadedState);
+    const currentTime = Date.now() / 1000;
 
-  //   if (decodedUser.exp < currentTime) {
-  //     store.dispatch(logout());
-  //   }
-  // } else {
-  //   store = configureStore();
-  // }
+    if (decodedUser.exp < currentTime) {
+      store.dispatch(logout());
+    }
+  } else {
+    store = Store();
+  }
 
   // delete after testing
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
-  // window.logout = logout;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.logout = logout;
 
   
   ReactDOM.render(
