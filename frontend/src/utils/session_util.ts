@@ -8,11 +8,11 @@ export const setAuthToken = (token: string): void => {
     }
 };
 
-export const signup = (data: any) => {
-    return axios.post('/api/users/register', data);
+export const signup = (user: any) => {
+    return axios.post('/api/users/register', user);
 };
 
-export const login = (data: any) => {
-    return axios.post('/api/users/login', data);
+export const login = (user: any) => {
+    return axios.post('/api/users/login', user);
 };
 

@@ -11,7 +11,8 @@ import App from './App';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  let store = Store()
+  // let store = Store()
+  let store = Store();
 
   // if (localStorage.jwtToken) {
   //   setAuthToken(localStorage.jwtToken);
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //       id: decodedUser.id },
   //   };
 
-  //   store = configureStore(preloadedState);
+  //   store = Store(preloadedState);
   //   const currentTime = Date.now() / 1000;
 
   //   if (decodedUser.exp < currentTime) {

@@ -1,0 +1,9 @@
+enum ActionTypes {
+    LOGIN_USER = 'LOGIN_USER',
+    LOGOUT_USER = 'LOGOUT_USER',
+    SESSION_ERRORS = "SESSION_ERRORS",
+    CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
+};
+
+
+export default ActionTypes;
