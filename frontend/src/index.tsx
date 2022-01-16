@@ -1,42 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './store.js/store';
+import Store from './store.js/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './utils/session_util';
 // import { logout } from './actions/session_actions';
-import Root from './components/root';
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
+import App from './app';
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  let store;
+  let store = Store()
 
-  if (localStorage.jwtToken) {
-    setAuthToken(localStorage.jwtToken);
-    const decodedUser = jwt_decode(localStorage.jwtToken);
-    const preloadedState = {
-      entities: { users: { [decodedUser.id]: decodedUser } },
-      session: { 
-        // isAuthenticated: true, 
-        id: decodedUser.id },
-    };
+  // if (localStorage.jwtToken) {
+  //   setAuthToken(localStorage.jwtToken);
+  //   const decodedUser = jwt_decode(localStorage.jwtToken);
+  //   const preloadedState = {
+  //     entities: { users: { [decodedUser.id]: decodedUser } },
+  //     session: { 
+  //       // isAuthenticated: true, 
+  //       id: decodedUser.id },
+  //   };
 
-    store = configureStore(preloadedState);
-    const currentTime = Date.now() / 1000;
+  //   store = configureStore(preloadedState);
+  //   const currentTime = Date.now() / 1000;
 
-    if (decodedUser.exp < currentTime) {
-      store.dispatch(logout());
-    }
-  } else {
-    store = configureStore();
-  }
+  //   if (decodedUser.exp < currentTime) {
+  //     store.dispatch(logout());
+  //   }
+  // } else {
+  //   store = configureStore();
+  // }
 
   // delete after testing
   // window.getState = store.getState;
   // window.dispatch = store.dispatch;
   // window.logout = logout;
 
-  ReactDOM.render(<Root store={store} />, document.getElementById("root"));
+  
+  ReactDOM.render(
+  <Provider store={store}>
+    <HashRouter>
+        <App />
+    </HashRouter>
+  </Provider>, 
+    document.getElementById("root"));
 });
 
 
