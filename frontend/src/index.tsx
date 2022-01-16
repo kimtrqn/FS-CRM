@@ -6,7 +6,7 @@ import { setAuthToken } from './utils/session_util';
 // import { logout } from './actions/session_actions';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import App from './app';
+import App from './App';
 
 
 
@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   ReactDOM.render(
-  <Provider store={store}>
-    <HashRouter>
-        <App />
-    </HashRouter>
-  </Provider>, 
+    <Provider store={store}>
+      <HashRouter>
+          <App />
+      </HashRouter>
+    </Provider>, 
     document.getElementById("root"));
 });
 
