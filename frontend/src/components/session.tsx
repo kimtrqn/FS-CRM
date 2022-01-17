@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/actions/SessionActions';
 import { useHistory, useRouteMatch } from "react-router-dom";
-import { render } from '@testing-library/react';
+import IPage from '../redux/interface/pages';
 
-
-const SessionForm: React.FunctionComponent<{}> = () => {
+const SessionForm: React.FunctionComponent<IPage> = props => {
     const dispatch = useDispatch();
     const history = useHistory();
     const match = useRouteMatch();
@@ -36,11 +35,11 @@ const SessionForm: React.FunctionComponent<{}> = () => {
 
     }
 
-    return {
-        <div>hello world</div>
-    }
+    return (
+        <div>hello world session</div>
+    )
 };
 
-export default SessionForm;
+export default  SessionForm;
 
 
