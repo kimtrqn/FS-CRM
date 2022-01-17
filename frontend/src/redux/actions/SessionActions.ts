@@ -2,7 +2,7 @@ import * as SessionUtil from '../../utils/session_util';
 import jwt_decode from 'jwt-decode'
 import { Dispatch } from 'redux';
 import ActionTypes from './types';
-import { SessionActions } from '../types/session';
+import { SessionActions } from '../interface/session';
 
 
 

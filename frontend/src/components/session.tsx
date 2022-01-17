@@ -5,7 +5,7 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { render } from '@testing-library/react';
 
 
-const SessionForm = () => {
+const SessionForm: React.FunctionComponent<{}> = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const match = useRouteMatch();

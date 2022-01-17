@@ -1,5 +1,5 @@
 import ActionTypes from '../actions/types';
-import { SessionActions, IUserState } from '../types/session';
+import { SessionActions, IUserState } from '../interface/session';
 
 
 const initialState: IUserState = {
