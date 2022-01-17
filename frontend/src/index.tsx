@@ -11,7 +11,8 @@ import App from './App';
 interface MyToken {
     id: any,
     email: string,
-    password: string
+    password: string,
+    exp: any
 }
 
 
@@ -39,9 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // delete after testing
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.logout = logout;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
+  // window.logout = logout;
 
   
   ReactDOM.render(

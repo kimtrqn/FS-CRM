@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/actions/SessionActions';
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
+import { render } from '@testing-library/react';
 
 
-
-const Login = () => {
+const SessionForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const match = useRouteMatch();
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+    const isLogin = match.path === '/login';
+    const isSignup = !isLogin;
 
 
     const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
@@ -23,11 +26,21 @@ const Login = () => {
             password
         };
 
-        await dispatch(login(user));
+        if (isLogin) {
+            await dispatch(login(user))
+        } 
+        // else {
+        //     await dispatch(signup(user))
+        // }
+        
 
+    }
+
+    return {
+        <div>hello world</div>
     }
 };
 
-export default Login;
+export default SessionForm;
 
 
