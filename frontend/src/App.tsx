@@ -17,7 +17,9 @@ const App: React.FunctionComponent<{}> = props => {
                 key={index}
                 path={route.path}
                 exact={route.exact}
-                component={route.component}
+                render={(props: RouteComponentProps<any>) => (
+                  <route.component name={route.name} {...props} {...route.props} />
+                )}
               />
             )
           })}
