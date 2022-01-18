@@ -33,14 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTime = Date.now() / 1000;
 
     if (decodedUser.exp < currentTime) {
-      store.dispatch(logout());
+      console.log('hi')
+      // store.dispatch(logout());
     }
   } else {
     store = Store();
   }
 
   // delete after testing
-  // window.getState = store.getState;
+  window.getState = store.getState;
   // window.dispatch = store.dispatch;
   // window.logout = logout;
 

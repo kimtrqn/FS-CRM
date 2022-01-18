@@ -15,8 +15,8 @@ const SessionForm: React.FunctionComponent<IPage & RouteComponentProps<any>> = p
     const isSignup = !isLogin;
 
 
-    const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
-    const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
+    const updateEmail = (event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
+    const updatePassword = (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
 
     const handleSubmit = async (e:any) => {
         e.preventDefault();
@@ -28,16 +28,46 @@ const SessionForm: React.FunctionComponent<IPage & RouteComponentProps<any>> = p
 
         if (isLogin) {
             await dispatch(login(user))
+            history.push('/')
         } 
-        // else {
-        //     await dispatch(signup(user))
-        // }
+        else {
+            // await dispatch(signup(user))
+            console.log('hi')
+        }
         
+         
 
     }
 
     return (
-        <div>hello world session....</div>
+        <form action="">
+        <input
+          id="username"
+          className="input"
+          onChange={updateEmail}
+          placeholder="Username"
+          type="text"
+          name="username"
+          value={email}
+        />
+
+        <input
+          id="password"
+          className="input"
+          onChange={updatePassword}
+          placeholder="Password"
+          type="password"
+          name="password"
+          value={password}
+        />
+
+        <input
+          className="input submit"
+          onClick={handleSubmit}
+          type="submit"
+          value={isLogin ? 'Log In' : 'Sign Up'}
+        />
+        </form>
     )
 };
 
